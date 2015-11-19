@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: rc-elasticsearch
+  labels:
+    app: elk
+spec:
+  replicas: 1
+  selector:
+    app: elk
+  template:
+    metadata:
+      labels:
+        app: elk
+    spec:
+      containers:
+      - image: gcr.io/google_containers/elasticsearch:1.7
+        name: c-elasticsearch
+        resources:
+          limits:
+            cpu: 100m
+        ports:
+        - containerPort: 9200
+          name: p-es-db
+          protocol: TCP
+        - containerPort: 9300
+          name: p-es-transport
+          protocol: TCP
+        volumeMounts:
+        - name: v-es-persistence
+          mountPath: /data
+      volumes:
+      - name: es-persistence
+      gcePersistentDisk:
+        pdName: elasticsearch-disk
+        fsType: ext4
