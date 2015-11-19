@@ -18,4 +18,4 @@ RUN cd / && \
 COPY run.sh /run.sh
 
 EXPOSE 5601
-CMD ["/run.sh"]
+CMD ["bash", "/run.sh"]

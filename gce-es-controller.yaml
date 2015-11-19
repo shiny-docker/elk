@@ -30,7 +30,7 @@ spec:
         - name: v-es-persistence
           mountPath: /data
       volumes:
-      - name: es-persistence
-      gcePersistentDisk:
-        pdName: elasticsearch-disk
-        fsType: ext4
+      - name: v-es-persistence
+        gcePersistentDisk:
+          pdName: elasticsearch-disk
+          fsType: ext4
