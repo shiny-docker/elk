@@ -1,4 +1,4 @@
 cluster.name: es-logging
 path.data: /data
 cloud.k8s.servicedns: elasticsearch-logging
-discovery.type: io.fabric8.elasticsearch.discover.k8s.K8sDiscoveryModule
+discovery.type: io.fabric8.elasticsearch.discover.k8s.K8s
