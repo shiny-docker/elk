@@ -1,5 +1,12 @@
+#1.3 syntax
 cluster.name: es-logging
 path.data: /data
-cloud.kubernetes.service: elasticsearch-logging
-cloud.kubernetes.namespace: default
-discovery.type: kubernetes
+cloud.k8s.servicedns: elasticsearch-logging
+discovery.type: io.fabric8.elasticsearch.discovery.k8s.K8sDiscoveryModule
+
+##2.1 syntax
+#cluster.name: es-logging
+#path.data: /data
+#cloud.kubernetes.service: elasticsearch-logging
+#cloud.kubernetes.namespace: default
+#discovery.type: kubernetes
