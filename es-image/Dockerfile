@@ -7,6 +7,10 @@ COPY elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml
 COPY run.sh /
 COPY elasticsearch_logging_discovery /
 
+RUN \
+  chmod +x /run.sh && \
+  chmod +x /elasticsearch_logging_discovery
+
 VOLUME ["/data"]
 
 EXPOSE 9200 9300
