@@ -1,8 +1,16 @@
-#1.3 syntax
-cluster.name: es-logging
+cluster.name: elasticsearch-logging
+node.master: ${NODE_MASTER}
+node.data: ${NODE_DATA}
+transport.tcp.port: ${TRANSPORT_PORT}
+http.port: ${HTTP_PORT}
+discovery.zen.ping.multicast.enabled: false
 path.data: /data
-cloud.k8s.servicedns: elasticsearch-logging
-discovery.type: io.fabric8.elasticsearch.discovery.k8s.K8sDiscoveryModule
+
+#fabric8 1.3 syntax
+#cluster.name: es-logging
+#path.data: /data
+#cloud.k8s.servicedns: elasticsearch-logging
+#discovery.type: io.fabric8.elasticsearch.discovery.k8s.K8sDiscoveryModule
 
 ##2.1 syntax
 #cluster.name: es-logging
