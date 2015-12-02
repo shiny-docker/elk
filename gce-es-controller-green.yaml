@@ -1,20 +1,22 @@
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: rc-elasticsearch
+  name: rc-es-g
   labels:
-    app: elk
+    app: elasticsearch-logging
 spec:
-  replicas: 1
+  replicas: 2
   selector:
-    app: elk
+    app: elasticsearch-logging
+    color: "green"
   template:
     metadata:
       labels:
-        app: elk
+        app: elasticsearch-logging
+        color: "green"
     spec:
       containers:
-      - image: gcr.io/google_containers/elasticsearch:1.7
+      - image: shinydocker/elasticsearch:1.1
         name: c-elasticsearch
         resources:
           limits:
@@ -30,7 +32,9 @@ spec:
         - name: v-es-persistence
           mountPath: /data
       volumes:
+      #- name: v-es-persistence
+      #- gcePersistentDisk:
+      #-   pdName: elasticsearch-disk
+      #-   fsType: ext4
       - name: v-es-persistence
-        gcePersistentDisk:
-          pdName: elasticsearch-disk
-          fsType: ext4
+        emptyDir: {}

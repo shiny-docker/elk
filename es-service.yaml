@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: elasticsearch
+  name: elasticsearch-logging
   labels:
-    app: elasticsearch
-    role: logging
+    app: elasticsearch-logging
 spec:
+  #type: NodePort
   ports:
   - port: 9200
     protocol: TCP
     targetPort: p-es-db
   selector:
-    app: elasticsearch
+    app: elasticsearch-logging
